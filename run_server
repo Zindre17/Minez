@@ -1,0 +1,11 @@
+#! /bin/bash
+# Launch server with specified amounts of start/max ram
+echo "checking for screen running server"
+if ! screen -ls | grep -q "server"; then
+echo "No screen found"
+echo "Launching server in another screen"
+exec screen -dmS server java -Xms4G -Xmx4G -jar server.jar
+else
+echo "Server already running"
+fi
+exit 0
